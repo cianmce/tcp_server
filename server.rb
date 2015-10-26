@@ -70,11 +70,12 @@ class Server
       text = helo(data, client)
     elsif data == "KILL_SERVICE\n"
       text = kill(data, client)
+      exit
     else
       text = unknown_message(data, client)
     end
     # Force delay
-    sleep(0.5)
+    # sleep(0.5)
     client.puts text
     client.close
   end
