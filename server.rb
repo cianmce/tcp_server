@@ -78,7 +78,7 @@ class Server
   # Handle different requests
   def helo(data, client)
     info "received HELO"
-    text = "#{data}IP:[#{@local_ip}]\nPort:[#{@port}]\nStudentID:[#{@student_id}]\n"
+    text = "#{data}IP:#{@local_ip}\nPort:#{@port}\nStudentID:#{@student_id}\n"
     info "returning: '#{text}'"
     return text
   end
