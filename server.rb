@@ -65,12 +65,13 @@ class Server
     puts 'handle_request'
     data = client.gets # Read 1st line from socket
     # data = client.read # Read all data
+    is_kill = false
 
     if data.start_with?("HELO")
       text = helo(data, client)
     elsif data == "KILL_SERVICE\n"
       text = kill(data, client)
-      exit
+      is_kill = true
     else
       text = unknown_message(data, client)
     end
@@ -78,6 +79,9 @@ class Server
     # sleep(0.5)
     client.puts text
     client.close
+    if not @running
+      exit
+    end
   end
     
   # Handle different requests
