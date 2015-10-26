@@ -9,7 +9,7 @@ class Server
     @student_id = student_id
     @local_ip = local_ip
     @remote_ip = open('http://whatismyip.akamai.com').read
-    logger.info "remote_ip: #{@remote_ip}"
+    info "remote_ip: #{@remote_ip}"
     info 'initialized'
   end
 
