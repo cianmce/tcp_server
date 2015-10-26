@@ -1,1 +1,1 @@
-web: ruby app.rb 2000
+web: ruby app.rb 80
