@@ -65,13 +65,12 @@ class Server
     puts 'handle_request'
     data = client.gets # Read 1st line from socket
     # data = client.read # Read all data
-    is_kill = false
-
+    # sock_domain, remote_port, remote_hostname, remote_ip = client.peeraddr
+    puts client.peeraddr
     if data.start_with?("HELO")
       text = helo(data, client)
     elsif data == "KILL_SERVICE\n"
       text = kill(data, client)
-      is_kill = true
     else
       text = unknown_message(data, client)
     end
