@@ -1,11 +1,15 @@
 require 'socket'
 require 'thread'
+require 'open-uri'
+
 
 class Server
   def initialize(logger, student_id)
     @logger     = logger
     @student_id = student_id
     @local_ip = local_ip
+    @remote_ip = open('http://whatismyip.akamai.com').read
+    logger.info "remote_ip: #{remote_ip}"
     info 'initialized'
   end
 
@@ -78,7 +82,7 @@ class Server
   # Handle different requests
   def helo(data, client)
     info "received HELO"
-    text = "#{data}IP:#{@local_ip}\nPort:#{@port}\nStudentID:#{@student_id}\n"
+    text = "#{data}IP:#{@remote_ip}\nPort:#{@port}\nStudentID:#{@student_id}\n"
     info "returning: '#{text}'"
     return text
   end

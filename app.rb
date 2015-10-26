@@ -16,9 +16,6 @@ logger.formatter = proc do |severity, datetime, progname, msg|
 end
 logger.info 'made logger'
 
-require 'open-uri'
-remote_ip = open('http://whatismyip.akamai.com').read
-logger.info "remote_ip: #{remote_ip}"
 
 # Make server
 server = Server.new(logger, STUDENT_ID)
