@@ -15,6 +15,8 @@ logger.formatter = proc do |severity, datetime, progname, msg|
   "#{severity} [#{Time.now.strftime('%H:%M:%S')}] T#{Thread.current['id']}: #{msg}\n"
 end
 logger.info 'made logger'
+puts 'made logger'
+puts "using port: #{port_number}"
 
 
 # Make server
